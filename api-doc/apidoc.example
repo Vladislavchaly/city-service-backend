@@ -1,0 +1,14 @@
+{
+  "name": "Gadget Repair Service (Api)",
+  "version": "1.0.0",
+  "description": "Gadget Repair Service Api Documentation",
+  "title": "Gadget Repair Service Api Documentation",
+  "url": "https://gadget-repair.loc/api/v1/",
+  "sampleUrl": "https://gadget-repair.loc/api/v1/",
+  "header": {
+    "title": "Read Me",
+    "filename": "header.md"
+  },
+  "order": [
+  ]
+}

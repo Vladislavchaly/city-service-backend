@@ -1,4 +1,4 @@
-https://gadget-repair.loc {
+https://be.gadget-repair.loc {
     root /app/public
     fastcgi / app:9000 php {
         connect_timeout 300s
