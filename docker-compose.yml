@@ -1,0 +1,80 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: "gadget_repair_postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
+    volumes:
+      - gadget_repair_postgres_data:/var/lib/postgresql/data
+
+  webserver:
+    image: abiosoft/caddy
+    container_name: "gadget_repair_webserver"
+    environment:
+      - ACME_AGREE=true
+      - CADDYPATH=/etc/caddycerts
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/Caddyfile
+      - ./docker/caddy/caddyssl:/etc/caddycerts
+      - ./:/app
+    depends_on:
+      - app
+
+  redis:
+    image: redis
+    container_name: "gadget_repair_redis"
+    ports:
+      - "6379:6379"
+    volumes:
+      - gadget_repair_redis_data:/data
+
+  queue_worker:
+    build: ./docker/
+    container_name: "gadget_repair_queue_worker"
+    restart: always
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres
+      - redis
+      - app
+    command: php /app/artisan queue:work --tries=3
+
+  app:
+    build: ./docker/
+    container_name: "gadget_repair_app"
+    volumes:
+      - ./:/app
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - postgres
+      - redis
+    command: /usr/local/sbin/php-fpm --allow-to-run-as-root
+
+#  cron:
+#    build: ./docker/
+#    container_name: "gadget_repair_cron"
+#    volumes:
+#      - ./:/app
+#    depends_on:
+#      - postgres
+#      - app
+#    command: ./cron_start.sh
+
+volumes:
+  gadget_repair_postgres_data:
+  gadget_repair_redis_data:
+
+networks:
+  default:
+    external:
+      name: gadget-repair-proxy
