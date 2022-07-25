@@ -31,4 +31,4 @@ npm-debug.log
 /bootstrap/cache/packages.php
 /bootstrap/cache/services.php
 /storage/framework/sessions/CWrDXvmBPSAPU52WP5hHUcvJedBUnGA4uGqpvhuf
-/storage
+/storage/framework/

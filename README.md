@@ -21,4 +21,5 @@ Install project
 7. node_modules/apidoc/bin/apidoc -i api-doc -o public/api-doc
 8. php artisan migrate
 9. php artisan db:seed
+10. php artisan passport:install
 
