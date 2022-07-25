@@ -1,6 +1,6 @@
 ###
 @apiVersion 1.0.0
-@api {post} v1/auth/registration Registration
+@api {post} auth/registration Registration
 @apiDescription This method should registration new user
 @apiName Registration
 @apiGroup Auth

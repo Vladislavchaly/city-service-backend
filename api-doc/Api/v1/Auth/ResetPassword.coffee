@@ -1,6 +1,6 @@
 ###
 @apiVersion 1.0.0
-@api {post} v1/auth/reset-password Reset Password
+@api {post} auth/reset-password Reset Password
 @apiDescription This method should reset password for user
 @apiName Reset Password
 @apiGroup Auth

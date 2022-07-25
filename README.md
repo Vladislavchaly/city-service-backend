@@ -19,3 +19,6 @@ Install project
 5. composer install (into docker container)
 6. npm i
 7. node_modules/apidoc/bin/apidoc -i api-doc -o public/api-doc
+8. php artisan migrate
+9. php artisan db:seed
+

@@ -1,6 +1,6 @@
 ###
 @apiVersion 1.0.0
-@api {post} v1/auth/login Login
+@api {post} auth/login Login
 @apiDescription This method should authorize the user.
 @apiName Login
 @apiGroup Auth
