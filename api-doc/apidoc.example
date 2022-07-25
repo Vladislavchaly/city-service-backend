@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Gadget Repair Service Api Documentation",
   "title": "Gadget Repair Service Api Documentation",
-  "url": "https://gadget-repair.loc/api/v1/",
-  "sampleUrl": "https://gadget-repair.loc/api/v1/",
+  "url": "https://be.gadget-repair.loc/api/v1/",
+  "sampleUrl": "https://be.gadget-repair.loc/api/v1/",
   "header": {
     "title": "Read Me",
     "filename": "header.md"
