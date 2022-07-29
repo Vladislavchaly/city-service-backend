@@ -2,9 +2,11 @@
 
 namespace App\Interfaces\Repositories;
 
+use App\Models\User;
+
 interface UsersRepositoryInterface
 {
-    public function create(array $data): object;
+    public function create(array $data);
 
     public function delete(int $id): void;
 
