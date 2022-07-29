@@ -9,8 +9,8 @@
 @apiUse HeadersModel
 @apiUse HeaderPost
 
-@apiParam {String} email <code>required</code> max:100 chars
-@apiParam {String} password <code>required</code> max:40 chars
+@apiBody {String} email <code>required</code> max:100 chars
+@apiBody {String} password <code>required</code> max:40 chars
 
 @apiSuccessExample {json} Success-Example:
 HTTP/1.1 200 OK

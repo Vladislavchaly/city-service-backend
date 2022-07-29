@@ -5,15 +5,17 @@ namespace App\Repositories;
 use App\Interfaces\Repositories\UsersRepositoryInterface;
 use App\Models\User;
 
-class UsersRepository implements UsersRepositoryInterface
+final class UsersRepository implements UsersRepositoryInterface
 {
-    public function create(array $data): bool
+    public function create(array $data): User
     {
         $user = new User();
 
         $user->fill($data);
 
-        return $user->save();
+        $user->save();
+
+        return $user;
     }
 
     public function delete(int $id): void {

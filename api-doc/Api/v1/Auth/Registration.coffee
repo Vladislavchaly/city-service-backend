@@ -5,6 +5,8 @@
 @apiName Registration
 @apiGroup Auth
 
+@apiHeader {String} Accept application/json = application/json
+
 @apiUse RequestModel
 @apiUse HeadersModel
 @apiUse HeaderPost

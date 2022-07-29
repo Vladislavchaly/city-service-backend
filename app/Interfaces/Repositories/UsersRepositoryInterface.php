@@ -4,7 +4,7 @@ namespace App\Interfaces\Repositories;
 
 interface UsersRepositoryInterface
 {
-    public function create(array $data): bool;
+    public function create(array $data): object;
 
     public function delete(int $id): void;
 

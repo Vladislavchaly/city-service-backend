@@ -11,8 +11,13 @@ class RegistrationController
     public function __invoke(RegistrationRequest $request, UsersRepositoryInterface $usersRepository)
     {
         $request->validated();
-        $usersRepository->create($request->all());
-
-        return response()->json([], Response::HTTP_OK);
+        $user = $usersRepository->create($request->all());
+        //Add email confirmation
+        //Add referral email
+        //TODO move create token functional to extra class
+        return response()->json([
+            'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken,
+        ], Response::HTTP_OK
+        );
     }
 }
