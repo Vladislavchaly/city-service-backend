@@ -12,8 +12,8 @@ class RegistrationController
     {
         $request->validated();
         $user = $usersRepository->create($request->all());
-        //Add email confirmation
-        //Add referral email
+        //TODO Add email confirmation
+        //TODO Add referral email
         //TODO move create token functional to extra class
         return response()->json([
             'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken,
