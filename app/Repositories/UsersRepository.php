@@ -4,12 +4,15 @@ namespace App\Repositories;
 
 use App\Interfaces\Repositories\UsersRepositoryInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 final class UsersRepository implements UsersRepositoryInterface
 {
     public function create(array $data): User
     {
         $user = new User();
+
+        $data['password'] = Hash::make($data['password']);
 
         $user->fill($data);
 

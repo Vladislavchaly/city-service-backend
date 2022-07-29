@@ -14,7 +14,6 @@ class RegistrationController
     {
         $request->validated();
         $user = $usersRepository->create($request->all());
-
         return response([
             'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken
         ],   200);
