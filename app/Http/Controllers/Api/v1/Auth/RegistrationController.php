@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api\v1\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Interfaces\Repositories\UsersRepositoryInterface;
 use Illuminate\Http\Response;
 //TODO Add email confirmation
 //TODO Add referral email
 //TODO move create token functional to extra class
-class RegistrationController
+class RegistrationController extends Controller
 {
     public function __invoke(RegistrationRequest $request, UsersRepositoryInterface $usersRepository): Response
     {

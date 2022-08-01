@@ -10,7 +10,8 @@ class LogoutController extends Controller
     public function __invoke()
     {
         if ($id = auth('api')->id()) {
-            return OauthAccessToken::where('user_id', $id)->delete();
+            OauthAccessToken::where('user_id', $id)->delete();
         }
+        return response();
     }
 }

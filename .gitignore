@@ -32,3 +32,4 @@ npm-debug.log
 /bootstrap/cache/services.php
 /storage/framework/sessions/CWrDXvmBPSAPU52WP5hHUcvJedBUnGA4uGqpvhuf
 /storage/framework/
+.env

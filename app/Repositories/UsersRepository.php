@@ -43,6 +43,13 @@ final class UsersRepository implements UsersRepositoryInterface
         return $user->where('email', $email)->first();
     }
 
+    public function getByToken(string $token): object
+    {
+        $user = new User();
+
+        return $user->where('token', $token)->first();
+    }
+
     public function update(int $id, array $data): bool
     {
 
