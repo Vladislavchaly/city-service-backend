@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
                 'email' => 'chaly95@gmail.com',
                 'password' => Hash::make('1Qwerty@'),
                 'related_id' => '1',
-                'status' => true
+                'status' => true,
+                'role_id' => 1
             ]
         );
     }

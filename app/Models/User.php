@@ -27,6 +27,7 @@ class User extends Authenticatable implements CanResetPassword
         'email',
         'password',
         'related_id',
+        'role_id',
         'status',
     ];
 
@@ -48,4 +49,12 @@ class User extends Authenticatable implements CanResetPassword
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id');
+    }
 }
