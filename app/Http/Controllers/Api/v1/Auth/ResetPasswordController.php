@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Requests\Api\v1\Auth\ResetPasswordRequest;
+use App\Interfaces\Repositories\UsersRepositoryInterface;
 use App\Notifications\Auth\ResetPassword;
 use App\Repositories\Eloquent\UsersRepository;
 
 class ResetPasswordController extends \App\Http\Controllers\Api\ResponseApiController
 {
-    public function __invoke(ResetPasswordRequest $request)
+    public function __invoke(ResetPasswordRequest $request, UsersRepositoryInterface $usersRepository)
     {
         $user = UsersRepository::resetPassword($request->all());
 

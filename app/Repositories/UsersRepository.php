@@ -36,6 +36,13 @@ final class UsersRepository implements UsersRepositoryInterface
         return $user->find($id)->first();
     }
 
+    public function getByEmail(string $email): object
+    {
+        $user = new User();
+
+        return $user->where('email', $email)->first();
+    }
+
     public function update(int $id, array $data): bool
     {
 

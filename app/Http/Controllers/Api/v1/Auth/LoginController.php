@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Repositories\UsersRepositoryInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, UsersRepositoryInterface $usersRepository): Response
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -20,7 +21,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            $user = User::query()->where('email', $credentials['email'])->first();
+            $user = $usersRepository->getByEmail($credentials['email']);
 
             return response([
                 'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken
