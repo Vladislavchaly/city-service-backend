@@ -16,6 +16,7 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             [
+                'id' => 1,
                 'key' => 'owner',
                 'title' => 'Owner',
                 'not_remove' => 1,
@@ -24,6 +25,7 @@ class RoleSeeder extends Seeder
                 'registry' => 0
             ],
             [
+                'id' => 2,
                 'key' => 'super_admin',
                 'title' => 'Super Admin',
                 'not_remove' => 0,
@@ -32,6 +34,7 @@ class RoleSeeder extends Seeder
                 'registry' => 0
             ],
             [
+                'id' => 3,
                 'key' => 'manager',
                 'title' => 'Manager',
                 'not_remove' => 0,
@@ -40,36 +43,13 @@ class RoleSeeder extends Seeder
                 'registry' => 0
             ],
             [
-                'key' => 'school',
-                'title' => 'School',
+                'id' => 4,
+                'key' => 'customer',
+                'title' => 'Customer',
                 'not_remove' => 1,
                 'access_admin' => 0,
                 'access_create' => 0,
                 'registry' => 1
-            ],
-            [
-                'key' => 'student',
-                'title' => 'Student',
-                'not_remove' => 1,
-                'access_admin' => 0,
-                'access_create' => 0,
-                'registry' => 1
-            ],
-            [
-                'key' => 'recruiter',
-                'title' => 'Recruiter',
-                'not_remove' => 1,
-                'access_admin' => 0,
-                'access_create' => 0,
-                'registry' => 1
-            ],
-            [
-                'key' => 'manager',
-                'title' => 'Manager',
-                'not_remove' => 1,
-                'access_admin' => 1,
-                'access_create' => 0,
-                'registry' => 0
             ]
         ]);
     }

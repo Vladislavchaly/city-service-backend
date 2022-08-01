@@ -32,7 +32,13 @@ HTTP/1.1 Error 401 Unauthorized
   {
     "Accept": "application/json",
     "Accept-Encoding": "gzip, deflate",
-    "Content-Type": "multipart/form-data; charset=UTF-8"
+    "Content-Type": "text/html; charset=UTF-8"
   }
+@apiHeader {String} Accept = application/json  application/json
+###
+
+###
+  @apiDefine HeaderGet
+
 @apiHeader {String} Accept = application/json  application/json
 ###
