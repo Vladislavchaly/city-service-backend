@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -28,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
         if (! $this->app->routesAreCached()) {
             Passport::routes();
         }
+
+        ResetPassword::createUrlUsing(function ($user, string $token) {
+            return 'https://example.com/reset-password?token='.$token;
+        });
 
     }
 }

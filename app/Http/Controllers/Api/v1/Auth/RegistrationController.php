@@ -1,33 +1,22 @@
 <?php
-//
-//namespace App\Http\Controllers\Api\v1\Auth;
-//
-//use App\Http\Requests\Api\v1\Auth\RegistrationRequest;
-//use App\Notifications\Auth\SuccessRegistration;
-//use App\Repositories\Eloquent\UsersRepository;
-//
-//class RegistrationController extends \App\Http\Controllers\Api\ResponseApiController
-//{
-//    public function __invoke(RegistrationRequest $request)
-//    {
-//        // Create new user
-//        $user = UsersRepository::createUser($request->all());
-//
-//        // Send contact to agile crm
-//        \App\Jobs\ZapierJob::dispatch('signUp', [
-//            [
-//                'email' => $user->email,
-//                'Registrant Type' => $user->role->title,
-//            ]
-//        ]);
-//
-//        // Send success registration email
-//        $user->notify(
-//            (new SuccessRegistration($request->get('password')))->locale(app()->getLocale())
-//        );
-//
-//        return response()->success(
-//            \App\Http\Resources\Api\v1\Auth\RegistrationResource::make($user)
-//        );
-//    }
-//}
+
+namespace App\Http\Controllers\Api\v1\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RegistrationRequest;
+use App\Interfaces\Repositories\UsersRepositoryInterface;
+use Illuminate\Http\Response;
+//TODO Add email confirmation
+//TODO Add referral email
+//TODO move create token functional to extra class
+class RegistrationController extends Controller
+{
+    public function __invoke(RegistrationRequest $request, UsersRepositoryInterface $usersRepository): Response
+    {
+        $request->validated();
+        $user = $usersRepository->create($request->all());
+        return response([
+            'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken
+        ],   200);
+    }
+}

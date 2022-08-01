@@ -6,26 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\Repositories\UsersRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginByTokenController extends Controller
 {
     public function __invoke(Request $request, UsersRepositoryInterface $usersRepository): Response
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'token' => ['required'],
         ]);
 
+        $user = $usersRepository->getByToken($credentials['token']);
 
-        if (Auth::attempt($credentials)) {
-
-            $user = $usersRepository->getByEmail($credentials['email']);
-
+        if ($user) {
             return response([
                 'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken
             ], 200);
-
         }
 
         return response(__('auth.failed'), 422);

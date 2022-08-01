@@ -1,21 +1,32 @@
 <?php
-//
-//namespace App\Http\Controllers\Api\v1\Auth;
-//
-//use App\Http\Requests\Api\v1\Auth\ResetPasswordRequest;
-//use App\Notifications\Auth\ResetPassword;
-//use App\Repositories\Eloquent\UsersRepository;
-//
-//class ResetPasswordController extends \App\Http\Controllers\Api\ResponseApiController
-//{
-//    public function __invoke(ResetPasswordRequest $request)
-//    {
-//        $user = UsersRepository::resetPassword($request->all());
-//
-//        if ($user) {
-//            $user->notify((new ResetPassword($user->unhash_password))->locale(app()->getLocale()));
-//        } else {
-//            return response()->error(trans('auth.check_false_email'));
-//        }
-//    }
-//}
+
+namespace App\Http\Controllers\Api\v1\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+
+class ResetPasswordController extends Controller
+{
+    public function __invoke(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        return Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+            }
+        );
+    }
+}

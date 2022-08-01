@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth', 'as' => 'auth.'], function () {
     Route::post('login', 'LoginController')->name('login');
+    Route::post('registration', 'RegistrationController')->name('registration');
+    Route::delete('logout', 'LogoutController')->name('logout');
+    Route::post('forgot-password', 'ForgotPasswordController')->name('password.forgot');
+    Route::post('reset-password', 'ResetPasswordController')->name('password.reset');
 });
 
 
