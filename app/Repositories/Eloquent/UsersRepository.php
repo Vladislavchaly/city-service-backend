@@ -37,17 +37,17 @@ final class UsersRepository extends BaseRepository implements UsersRepositoryInt
         return $this->model->with('role')->all();
     }
 
-    public function getById(int $id): object
+    public function getById(int $id): Model
     {
         return $this->model->with('role')->find($id)->first();
     }
 
-    public function getByEmail(string $email): object
+    public function getByEmail(string $email): Model
     {
         return $this->model->with('role')->where('email', $email)->first();
     }
 
-    public function getByToken(string $token): object
+    public function getByToken(string $token): Model
     {
         return $this->model->with('role')->where('token', $token)->first();
     }

@@ -10,7 +10,7 @@ abstract class BaseRepository implements EloquentRepositoryInterface
     /**
      * @var Model
      */
-    protected $model;
+    protected Model $model;
 
     /**
      * BaseRepository constructor.

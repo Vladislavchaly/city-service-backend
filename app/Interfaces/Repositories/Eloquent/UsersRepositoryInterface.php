@@ -13,11 +13,11 @@ interface UsersRepositoryInterface
 
     public function getAll(): Collection;
 
-    public function getById(int $id): object;
+    public function getById(int $id): Model;
 
-    public function getByEmail(string $email): object;
+    public function getByEmail(string $email): Model;
 
-    public function getByToken(string $token): object;
+    public function getByToken(string $token): Model;
 
     public function update(int $id, array $data): bool;
 }

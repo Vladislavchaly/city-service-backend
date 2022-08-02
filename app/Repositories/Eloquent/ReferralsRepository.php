@@ -40,12 +40,12 @@ final class ReferralsRepository extends BaseRepository implements ReferralsRepos
         return $this->model::all();
     }
 
-    public function getById(int $id): object
+    public function getById(int $id): Model
     {
         return $this->model->find($id)->first();
     }
 
-    public function getByUserId(string $userId): object
+    public function getByUserId(string $userId): Model
     {
         return $this->model->where('user_id', $userId)->first();
     }

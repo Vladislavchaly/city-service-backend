@@ -13,9 +13,9 @@ interface ReferralsRepositoryInterface
 
     public function getAll(): array;
 
-    public function getById(int $id): object;
+    public function getById(int $id): Model;
 
-    public function getByUserId(string $userId): object;
+    public function getByUserId(string $userId): Model;
 
     public function updateStatus(int $id, bool $status): void;
 
