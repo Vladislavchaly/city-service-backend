@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
-use App\Interfaces\Repositories\ReferralsRepositoryInterface;
-use App\Interfaces\Repositories\UsersRepositoryInterface;
-use App\Repositories\ReferralsRepository;
-use App\Repositories\UsersRepository;
+use App\Interfaces\Repositories\Eloquent\EloquentRepositoryInterface;
+use App\Interfaces\Repositories\Eloquent\ReferralsRepositoryInterface;
+use App\Interfaces\Repositories\Eloquent\ReferralTokensRepositoryInterface;
+use App\Interfaces\Repositories\Eloquent\UsersRepositoryInterface;
+use App\Repositories\Eloquent\BaseRepository;
+use App\Repositories\Eloquent\ReferralsRepository;
+use App\Repositories\Eloquent\ReferralTokensRepository;
+use App\Repositories\Eloquent\UsersRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -17,8 +21,10 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(EloquentRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(UsersRepositoryInterface::class, UsersRepository::class);
         $this->app->bind(ReferralsRepositoryInterface::class, ReferralsRepository::class);
+        $this->app->bind(ReferralTokensRepositoryInterface::class, ReferralTokensRepository::class);
     }
 
     /**

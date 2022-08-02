@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Interfaces\Repositories;
+namespace App\Interfaces\Repositories\Eloquent;
 
-use App\Models\ReferralToken;
-use App\Models\Referral;
+use Illuminate\Database\Eloquent\Model;
 
 interface ReferralsRepositoryInterface
 {
 
-    public function create(string $refToken, int $referralId): Referral;
+    public function create(string $refToken, int $referralId): Model;
 
     public function delete(int $id): void;
 
@@ -19,7 +18,5 @@ interface ReferralsRepositoryInterface
     public function getByUserId(string $userId): object;
 
     public function updateStatus(int $id, bool $status): void;
-
-    public function createReferralToken(int $userId): string;
 
 }

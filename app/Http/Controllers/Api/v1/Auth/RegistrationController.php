@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
-use App\Interfaces\Repositories\UsersRepositoryInterface;
-use App\Interfaces\Repositories\ReferralsRepositoryInterface;
+use App\Interfaces\Repositories\Eloquent\ReferralsRepositoryInterface;
+use App\Interfaces\Repositories\Eloquent\UsersRepositoryInterface;
 use App\Notifications\SendReferralLink;
 use Illuminate\Http\Response;
 
@@ -25,7 +25,7 @@ class RegistrationController extends Controller
 
         $user->notify(new SendReferralLink($refToken));
 
-        if (!$request->input('referralToken')) {
+        if ($request->input('referralToken')) {
             $referralsRepository->create($request->input('referralToken'), $user->id);
         }
 
