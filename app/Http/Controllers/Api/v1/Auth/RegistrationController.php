@@ -24,7 +24,7 @@ class RegistrationController extends Controller
 
         $refToken = $referralsRepository->createReferralToken($user->id);
 
-        Notification::send($user, new SendReferralLink($refToken));
+        $user->notify(new SendReferralLink($refToken));
 
         if (!$request->input('referralToken')) {
             $referralsRepository->create($request->input('referralToken'), $user->id);
