@@ -21,9 +21,12 @@ final class RegistrationRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+
+    //TODO add validate rederralToken exist
     public function rules()
     {
         return [
+            'referralToken' => 'min:5|max:5',
             'name' => 'required|max:255',
             'email' => 'required||unique:users|email|max:255',
             'password' => 'required|confirmed|min:8'
