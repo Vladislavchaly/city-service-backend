@@ -1,4 +1,4 @@
-# XXXProject
+# Gadget Repair Service
 
 Used technologies stack
 
