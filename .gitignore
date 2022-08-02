@@ -7,7 +7,7 @@
 /vendor
 /.idea
 /composer.lock
-.env
+/.env
 .env.backup
 .env.testing
 .env.dusk.local
@@ -22,7 +22,6 @@ public/fonts
 public/js
 public/css
 public/mix-manifest.json
-npm-debug.log
 .php_cs.cache
 *.swp
 /storage/framework/views/011ac5c3fc8bb2fd56c323f5510bae609400be4b.php
