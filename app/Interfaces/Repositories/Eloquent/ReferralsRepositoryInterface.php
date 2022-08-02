@@ -2,6 +2,7 @@
 
 namespace App\Interfaces\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 interface ReferralsRepositoryInterface
@@ -11,7 +12,7 @@ interface ReferralsRepositoryInterface
 
     public function delete(int $id): void;
 
-    public function getAll(): array;
+    public function getAll(): Collection;
 
     public function getById(int $id): Model;
 

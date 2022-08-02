@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 interface ReferralTokensRepositoryInterface
 {
 
-    public function create(int $userId): Model;
+    public function create(int $referralId): Model;
 
     public function delete(int $id): void;
 

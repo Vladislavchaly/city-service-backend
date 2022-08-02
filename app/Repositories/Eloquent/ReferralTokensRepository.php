@@ -30,12 +30,12 @@ final class ReferralTokensRepository extends BaseRepository implements ReferralT
 
     public function delete(int $id): void
     {
-        $this->model::destroy($id);
+        $this->model->destroy($id);
     }
 
     public function getAll(): Collection
     {
-        return $this->model::all();
+        return $this->model->all();
     }
 
     public function getById(int $id): Model

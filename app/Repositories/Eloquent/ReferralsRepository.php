@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Interfaces\Repositories\Eloquent\ReferralsRepositoryInterface;
 use App\Interfaces\Repositories\Eloquent\ReferralTokensRepositoryInterface;
 use App\Models\Referral;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 final class ReferralsRepository extends BaseRepository implements ReferralsRepositoryInterface
@@ -32,12 +33,12 @@ final class ReferralsRepository extends BaseRepository implements ReferralsRepos
 
     public function delete(int $id): void
     {
-        $this->model::destroy($id);
+        $this->model->destroy($id);
     }
 
-    public function getAll(): array
+    public function getAll(): Collection
     {
-        return $this->model::all();
+        return $this->model->all();
     }
 
     public function getById(int $id): Model
