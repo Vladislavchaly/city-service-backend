@@ -24,6 +24,7 @@ final class RegistrationRequest extends FormRequest
     public function rules()
     {
         return [
+            'referralToken' => 'min:30|max:30',
             'name' => 'required|max:255',
             'email' => 'required||unique:users|email|max:255',
             'password' => 'required|confirmed|min:8'

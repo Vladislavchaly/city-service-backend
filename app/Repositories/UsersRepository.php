@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 final class UsersRepository implements UsersRepositoryInterface
 {
+
     public function create(array $data): User
     {
         $user = new User();

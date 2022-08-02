@@ -6,7 +6,7 @@ use App\Models\User;
 
 interface UsersRepositoryInterface
 {
-    public function create(array $data);
+    public function create(array $data): User;
 
     public function delete(int $id): void;
 
