@@ -8,7 +8,6 @@ use App\Interfaces\Repositories\UsersRepositoryInterface;
 use App\Interfaces\Repositories\ReferralsRepositoryInterface;
 use App\Notifications\SendReferralLink;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Notification;
 
 class RegistrationController extends Controller
 {
