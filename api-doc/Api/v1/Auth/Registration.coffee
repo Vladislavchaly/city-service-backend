@@ -11,6 +11,7 @@
 @apiUse HeadersModel
 @apiUse HeaderPost
 
+@apiBody {String} referralToken <code>optional</code>
 @apiBody {String} name <code>required</code>
 @apiBody {String} email <code>required</code> max:100 chars | unique:users
 @apiBody {String} password <code>required</code> min:6 chars | max:40 chars
@@ -33,5 +34,14 @@ HTTP/1.1 Error 400 Bad Request
         "password": "The password confirmation does not match.",
         "password_confirmation": "The password confirmation must be at least 6 characters."
     }
+}
+
+@apiExample {json} Request-Example:
+HTTP/1.1 200 OK
+{
+    "name": "vlad",
+    "email": "chaly95@gmail.com",
+    "password": "1Qwerty@",
+    "password_confirmation": "1Qwerty@"
 }
 ###
