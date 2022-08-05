@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginByTokenRequest;
 use App\Interfaces\Repositories\Eloquent\UsersRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class LoginByTokenController extends Controller
 {
-    public function __invoke(Request $request, UsersRepositoryInterface $usersRepository): Response
+    public function __invoke(LoginByTokenRequest $request, UsersRepositoryInterface $usersRepository): Response
     {
-        $credentials = $request->validate([
-            'token' => ['required'],
-        ]);
 
-        $user = $usersRepository->getByToken($credentials['token']);
+        $user = $usersRepository->getByToken($request['token']);
 
         if ($user) {
             return response([
