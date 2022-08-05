@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class RegistrationRequest extends FormRequest
+final class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,15 +21,11 @@ final class RegistrationRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-
-    //TODO add validate rederralToken exist
     public function rules()
     {
         return [
-            'referralToken' => 'min:5|max:5',
-            'name' => 'required|max:255',
-            'email' => 'required||unique:users|email|max:255',
-            'password' => 'required|confirmed|min:8'
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:8'
         ];
     }
 }

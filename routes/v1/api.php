@@ -28,6 +28,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth', 'as' => 'auth.'], funct
 
 Route::group(['prefix' => 'users', 'namespace' => 'Users', 'as' => 'users.'], function () {
     Route::get('me', 'MeController')->name('me')->middleware('auth:api');
+    Route::post('update', 'UpdateController')->name('update')->middleware('auth:api');
 });
 
 //Route::middleware('auth:api')->get('/user/me', function (Request $request) {

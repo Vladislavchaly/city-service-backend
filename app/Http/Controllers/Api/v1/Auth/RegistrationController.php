@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegistrationRequest;
+use App\Http\Requests\Auth\RegistrationRequest;
 use App\Interfaces\Repositories\Eloquent\ReferralsRepositoryInterface;
 use App\Interfaces\Repositories\Eloquent\UsersRepositoryInterface;
 use App\Notifications\SendReferralLink;
@@ -17,7 +17,6 @@ class RegistrationController extends Controller
         ReferralsRepositoryInterface $referralsRepository
     ): Response
     {
-        $request->validated();
 
         $user = $usersRepository->create($request->all());
 
