@@ -31,6 +31,11 @@ Route::group(['prefix' => 'users', 'namespace' => 'Users', 'as' => 'users.'], fu
     Route::post('update', 'UpdateController')->name('update')->middleware('auth:api');
 });
 
+
+Route::group(['prefix' => 'referrals', 'namespace' => 'Referrals', 'as' => 'referrals.'], function () {
+    Route::get('count', 'CountController')->name('count')->middleware('auth:api');
+});
+
 //Route::middleware('auth:api')->get('/user/me', function (Request $request) {
 //    return $request->user();
 //});

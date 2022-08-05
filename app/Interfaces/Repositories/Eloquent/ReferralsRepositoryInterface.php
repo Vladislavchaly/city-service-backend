@@ -20,4 +20,6 @@ interface ReferralsRepositoryInterface
 
     public function updateStatus(int $id, bool $status): void;
 
+    public function countReferrals(int $userId, bool $status): int;
+
 }

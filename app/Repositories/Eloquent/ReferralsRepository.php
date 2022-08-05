@@ -68,4 +68,9 @@ final class ReferralsRepository extends BaseRepository implements ReferralsRepos
         return $tokenObj->user_id;
     }
 
+    public function countReferrals(int $userId, bool $status): int
+    {
+       return $this->model->where('user_id', $userId)->where('status', $status)->count();
+    }
+
 }
