@@ -6,17 +6,18 @@ use App\Interfaces\Repositories\Eloquent\UsersRepositoryInterface;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Model;
 
-final class UsersRepository extends BaseRepository implements UsersRepositoryInterface
+final class UsersRepository implements UsersRepositoryInterface
 {
+
+    protected User $model;
 
     public function __construct(User $model)
     {
-        parent::__construct($model);
+        $this->model = $model;
     }
 
-    public function create(array $data): Model
+    public function create(array $data): User
     {
         $data['password'] = Hash::make($data['password']);
 
@@ -37,17 +38,17 @@ final class UsersRepository extends BaseRepository implements UsersRepositoryInt
         return $this->model->with('role')->all();
     }
 
-    public function getById(int $id): Model
+    public function getById(int $id): User
     {
         return $this->model->with('role')->find($id)->first();
     }
 
-    public function getByEmail(string $email): Model
+    public function getByEmail(string $email): User
     {
         return $this->model->with('role')->where('email', $email)->first();
     }
 
-    public function getByToken(string $token): Model
+    public function getByToken(string $token): User
     {
         return $this->model->with('role')->where('token', $token)->first();
     }
