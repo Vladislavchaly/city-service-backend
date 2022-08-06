@@ -1,6 +1,6 @@
 ###
 @apiVersion 1.0.0
-@api {get} user/me Get Me
+@api {get} users/me Get Me
 @apiDescription This method should getting current user.
 @apiName Get Me
 @apiGroup User
@@ -13,23 +13,14 @@
 @apiSuccessExample {json} Success-Example:
 HTTP/1.1 200 OK
 {
-    "access_token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjA0NTY5NTFjODdkOGE3MzViY2YzM2QxMGVmOTA0YjhjNWJlOGQ5MTI3YjQ5OTllMTE3YzA5ZjJjNWQ0MTdmODYxZTU5MGI0ZjQyNTc0MjAiLCJpYXQiOjE1NzU5MTk4NjMsIm5iZiI6MTU3NTkxOTg2MywiZXhwIjoxNjA3NTQyMjYzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.XUzsRkbbCkEI1smBUuciNhnnGXOiOlMfvkV2Eq0Er_9ieJQntm6OqxetMKv73nWkaMz7DpWZSfUHRAVAlI5nGhfRIZCe-btNxfGDrzqDYGc4k0TeNrRZsa_RNAmuMayPde5jfsvv2j6Jgsr-WB4m_UFKlK3TzozDw2Q1acySwng1zCpIrWLQSdEcfW2LnPhgPZi3jBs5BGe98jqjKLHuH9R-HaOCDnanYmvNzyWZ5L593MgsDckTXE6H2bRIuEzyn4RsurVVAp47kn-XjENtYsc27cIUWT7DUlGeOgR3U-MdQ5vljEJAXd48kt7JQOEWvoLMSVqsboF7squBwCztnzIlkeqUCVuWnPO2AgMiyaAjKnVegozKt-wOfJn0bTac7lcSqUTr4vlGMRI0WlZ_cgfbN2UpoPBt8Xhj2y75w0JUMsUO3xGjqEQw6ebOSSHC9htEtOzY95enaAUTXUalVlmQlvRzkf3QZLOSVrZY8MrWTitW_b6QJ4QMF6DLNP9OlOZoosyb4YjCiZaRYBKQYgZ4X_m8ig-d-_OKrg2jboeoxmSHSnw43pFp-PPoC6j0n27CxdGZz2HAv4S7akeyBGxw4qGlPGA5ylxYMmnK1zh0gQKmSlF21NmXMuTeUOV2-4vBh-mKMV_H-UMBJ0Y6zvfwkksZHnkQ751D08txfpY"
-}
-
-@apiErrorExample {json} 400 Bad Request:
-HTTP/1.1 Error 400 Bad Request
-{
-    "errors": {
-        "email": "The email field is required.",
-        "password": "The password field is required."
-    }
-}
-
-@apiErrorExample {json} 401 Unauthorized:
-HTTP/1.1 Error 401 Unauthorized
-{
-    "errors": {
-        "other": "The user credentials are incorrect."
-    }
+    "id": 20,
+    "name": "Vlad",
+    "email": "chaly95@gmail.com",
+    "email_verified_at": null,
+    "role_id": 4,
+    "related_id": null,
+    "status": true,
+    "created_at": "2022-08-02T07:08:15.000000Z",
+    "updated_at": "2022-08-05T20:02:23.000000Z"
 }
 ###

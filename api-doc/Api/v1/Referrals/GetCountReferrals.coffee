@@ -13,7 +13,6 @@
 @apiSuccessExample {json} Success-Example:
 HTTP/1.1 200 OK
 {
-    1
+    "count": 1
 }
-
 ###

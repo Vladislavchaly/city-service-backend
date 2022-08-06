@@ -1,6 +1,6 @@
 ###
 @apiVersion 1.0.0
-@api {post} user/update Update Me
+@api {post} users/update Update Me
 @apiDescription This method should updating current user.
 @apiName Update Me
 @apiGroup User

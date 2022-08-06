@@ -36,6 +36,10 @@ Route::group(['prefix' => 'referrals', 'namespace' => 'Referrals', 'as' => 'refe
     Route::get('count', 'CountController')->name('count')->middleware('auth:api');
 });
 
+Route::group(['prefix' => 'referral-tokens', 'namespace' => 'ReferralTokens', 'as' => 'referral-tokens.'], function () {
+    Route::get('', 'GetController')->name('get')->middleware('auth:api');
+});
+
 //Route::middleware('auth:api')->get('/user/me', function (Request $request) {
 //    return $request->user();
 //});
