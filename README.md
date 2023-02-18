@@ -14,12 +14,14 @@ Used technologies stack
 Install project
 1. create CaddyFile /docker/caddy/Caddyfile
 2. create /api-doc/apidoc.json
-3. docker compose up
-4. docker exec -i -t gadget_repair_app bash
-5. composer install (into docker container)
-6. npm i
-7. node_modules/apidoc/bin/apidoc -i api-doc -o public/api-doc
-8. php artisan migrate
-9. php artisan db:seed
-10. php artisan passport:install
+3. create .env in root
+4. docker network create gadget-repair-proxy
+5. docker compose up
+6. docker exec -i -t gadget_repair_app bash
+7. composer install (into docker container)
+8. npm i
+9. node_modules/apidoc/bin/apidoc -i api-doc -o public/api-doc
+10. php artisan migrate
+11. php artisan db:seed
+12. php artisan passport:install
 
