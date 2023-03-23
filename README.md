@@ -15,9 +15,9 @@ Install project
 1. create CaddyFile /docker/caddy/Caddyfile
 2. create /api-doc/apidoc.json
 3. create .env in root
-4. docker network create gadget-repair-proxy
+4. docker network create city-service-proxy
 5. docker compose up
-6. docker exec -i -t gadget_repair_app bash
+6. docker exec -i -t city_service_app bash
 7. composer install (into docker container)
 8. npm i
 9. node_modules/apidoc/bin/apidoc -i api-doc -o public/api-doc
