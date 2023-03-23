@@ -77,4 +77,4 @@ volumes:
 networks:
   default:
     external:
-      name: gadget-repair-proxy
+      name: city-service-proxy
