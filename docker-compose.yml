@@ -3,7 +3,7 @@ version: "3"
 services:
   postgres:
     image: postgres:latest
-    container_name: "gadget_repair_postgres"
+    container_name: "city_service_postgres"
     ports:
       - "5432:5432"
     environment:
@@ -11,11 +11,11 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_DATABASE}
     volumes:
-      - gadget_repair_postgres_data:/var/lib/postgresql/data
+      - city_service_postgres_data:/var/lib/postgresql/data
 
   webserver:
     image: abiosoft/caddy
-    container_name: "gadget_repair_webserver"
+    container_name: "city_service_webserver"
     environment:
       - ACME_AGREE=true
       - CADDYPATH=/etc/caddycerts
@@ -31,15 +31,15 @@ services:
 
   redis:
     image: redis
-    container_name: "gadget_repair_redis"
+    container_name: "city_service_redis"
     ports:
       - "6379:6379"
     volumes:
-      - gadget_repair_redis_data:/data
+      - city_service_redis_data:/data
 
   queue_worker:
     build: ./docker/
-    container_name: "gadget_repair_queue_worker"
+    container_name: "city_service_queue_worker"
     restart: always
     volumes:
       - ./:/app
@@ -51,7 +51,7 @@ services:
 
   app:
     build: ./docker/
-    container_name: "gadget_repair_app"
+    container_name: "city_service_app"
     volumes:
       - ./:/app
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
@@ -62,7 +62,7 @@ services:
 
 #  cron:
 #    build: ./docker/
-#    container_name: "gadget_repair_cron"
+#    container_name: "city_service_cron"
 #    volumes:
 #      - ./:/app
 #    depends_on:
@@ -71,8 +71,8 @@ services:
 #    command: ./cron_start.sh
 
 volumes:
-  gadget_repair_postgres_data:
-  gadget_repair_redis_data:
+  city_service_postgres_data:
+  city_service_redis_data:
 
 networks:
   default:
