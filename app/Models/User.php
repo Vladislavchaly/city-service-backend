@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -28,7 +29,7 @@ class User extends Authenticatable implements CanResetPassword
         'password',
         'related_id',
         'role_id',
-        'status',
+        'status'
     ];
 
     /**
@@ -51,9 +52,9 @@ class User extends Authenticatable implements CanResetPassword
     ];
 
     /**
-     * Get the phone associated with the user.
+     * Get the role associated with the user.
      */
-    public function role()
+    public function role(): HasOne
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
