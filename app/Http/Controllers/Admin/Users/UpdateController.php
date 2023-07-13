@@ -15,8 +15,8 @@ class UpdateController extends Controller
             $usersRepository->update(
                 $request->user()->id,
                 $request->all()
-            ), 200);
+            ),
+            200
+        );
     }
 }
-
-

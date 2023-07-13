@@ -17,7 +17,7 @@ interface UsersRepositoryInterface
 
     public function getByEmail(string $email): User;
 
-    public function getByToken(string $token): User;
+    public function getByToken(string $token): User | null;
 
     public function update(int $id, array $data): bool;
 }

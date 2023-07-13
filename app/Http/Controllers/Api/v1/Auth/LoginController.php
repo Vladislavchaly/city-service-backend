@@ -13,17 +13,13 @@ class LoginController extends Controller
     public function __invoke(LoginRequest $request, UsersRepositoryInterface $usersRepository): Response
     {
         if (Auth::attempt($request->all())) {
-
             $user = $usersRepository->getByEmail($request['email']);
 
             return response([
                 'token' => 'Bearer ' . $user->createToken('Laravel Password Grant Client')->accessToken
             ], 200);
-
         }
 
         return response(__('auth.failed'), 422);
     }
 }
-
-
