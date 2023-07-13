@@ -35,7 +35,7 @@ final class UsersRepository implements UsersRepositoryInterface
 
     public function getAll(): Collection
     {
-        return $this->model->with('role')->all();
+        return $this->model->with('role')->get();
     }
 
     public function getById(int $id): User
