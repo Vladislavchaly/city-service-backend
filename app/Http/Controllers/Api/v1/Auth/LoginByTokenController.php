@@ -11,7 +11,6 @@ class LoginByTokenController extends Controller
 {
     public function __invoke(LoginByTokenRequest $request, UsersRepositoryInterface $usersRepository): Response
     {
-
         $user = $usersRepository->getByToken($request['token']);
 
         if ($user) {
@@ -23,5 +22,3 @@ class LoginByTokenController extends Controller
         return response(__('auth.failed'), 422);
     }
 }
-
-

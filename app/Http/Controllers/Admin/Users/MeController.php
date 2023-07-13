@@ -13,5 +13,3 @@ class MeController extends Controller
         return response($request->user(), 200);
     }
 }
-
-

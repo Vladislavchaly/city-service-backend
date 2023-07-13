@@ -13,7 +13,6 @@ class LoginController extends Controller
     public function __invoke(LoginRequest $request, UsersRepositoryInterface $usersRepository): Response
     {
         if (Auth::attempt($request->all())) {
-
             $user = $usersRepository->getByEmail($request['email']);
             $role = $user->role()->first();
             if ($role && $role->access_admin) {
@@ -27,5 +26,3 @@ class LoginController extends Controller
         return response(__('auth.failed'), 422);
     }
 }
-
-

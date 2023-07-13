@@ -15,8 +15,7 @@ class RegistrationController extends Controller
         RegistrationRequest          $request,
         UsersRepositoryInterface     $usersRepository,
         ReferralsRepositoryInterface $referralsRepository
-    ): Response
-    {
+    ): Response {
 
         $user = $usersRepository->create($request->all());
 
