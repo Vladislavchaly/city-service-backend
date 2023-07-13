@@ -23,5 +23,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth', 'as' => 'auth.'], funct
 
 Route::group(['prefix' => 'users', 'namespace' => 'Users', 'as' => 'users.'], function () {
     Route::get('me', 'MeController')->name('me')->middleware(['auth:api', 'admin.check']);
-    Route::post('update', 'UpdateController')->name('update')->middleware(['auth:api', 'admin.check']);
+    Route::get('', 'GetController')->name('get')->middleware(['auth:api', 'admin.check']);
+    Route::get('/{id}', 'GetByIdController')->name('get')->middleware(['auth:api', 'admin.check']);
+    Route::put('', 'UpdateController')->name('update')->middleware(['auth:api', 'admin.check']);
+    Route::put('/{id}', 'UpdateByIdController')->name('update-by-id')->middleware(['auth:api', 'admin.check']);
 });
